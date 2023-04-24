@@ -1,0 +1,40 @@
+version: "3.8"
+services:
+  nginx:
+    container_name: Nginx
+    build: ./docker/nginx
+    command: nginx -g "daemon off;"
+    links:
+      - php
+    ports:
+      - "88:80"
+    volumes:
+      - ./logs/nginx:/var/log/nginx
+      - ./src/devops-project:/var/www/html/devops-project
+  php:
+    container_name: php
+    build: ./docker/php
+    ports:
+      - "9000:9000"
+    volumes:
+      - ./src/devops-project:/var/www/html/devops-project
+    working_dir: /var/www/html/devops-project
+  composer:
+    container_name: Composer
+    image: composer/composer
+    volumes:
+      - ./src/devops-project:/var/www/html/devops-project
+    working_dir: /var/www/html/devops-project
+    command: install
+
+  mysql:
+    image: mariadb:10.10.2
+    container_name: mysql--
+    environment:
+      MYSQL_ROOT_PASSWORD: '<root-password>'
+      MYSQL_DATABASE: laravel
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: '<db-password>'
+    ports:
+      - "3306:3306"
+

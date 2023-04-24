@@ -1,0 +1,4 @@
+devops-project/database/mysql/ib_logfile0
+devops-project/database/config/mariadb/ib_logfile0
+devops-project/database/mongodb/db/journal/WiredTigerLog.0000000005
+devops-project/database/mongodb/db/journal/WiredTigerPreplog.0000000001
