@@ -15,9 +15,9 @@ RUN apt update \
             sockets \
         && docker-php-ext-enable pdo_mysql
 
-RUN pecl install grpc
+#RUN pecl install grpc
 
-RUN docker-php-ext-enable grpc.so
+#RUN docker-php-ext-enable grpc.so
 
 WORKDIR /var/www/devops-project
 
