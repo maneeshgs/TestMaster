@@ -26,6 +26,8 @@ jobs:
 
     - name: Login to Amazon ECR
       uses: aws-actions/amazon-ecr-login@v1
+        registry:827065509417.dkr.ecr.ap-south-1.amazonaws.com
+        region:ap-south-1
 
     - name: Push Docker image to Amazon ECR
       run: |
