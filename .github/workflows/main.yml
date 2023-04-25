@@ -28,7 +28,7 @@ jobs:
     - name: Build and push Docker image
       run: |
        sudo docker build -t dock .
-       sudo docker tag dock:latest maneesh:latest
-       sudo docker push maneesh:latest
+       sudo docker tag dock maneeshgs07/dock:latest
+       sudo docker push maneeshgs07/dock:latest
        # sudo docker build -t dock .
         #sudo docker push dock
