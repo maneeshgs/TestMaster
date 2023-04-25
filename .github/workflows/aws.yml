@@ -21,20 +21,13 @@ jobs:
 
     - name: Build and push Docker image
       run: |
-        docker build -t your-docker-image .
-    - name: Login to Docker Hub
-      uses: docker/login-action@v1
-      with:
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
-        
-    - name:  push Docker image
-      run : docker push your-docker-image
+        docker build -t docker .
+    
 
     - name: Login to Amazon ECR
       uses: aws-actions/amazon-ecr-login@v1
 
     - name: Push Docker image to Amazon ECR
       run: |
-        docker tag your-docker-image:latest <your-aws-account-id>.dkr.ecr.<your-region>.amazonaws.com/your-ecr-repo:latest
-        docker push <your-aws-account-id>.dkr.ecr.<your-region>.amazonaws.com/your-ecr-repo:latest
+        docker tag docker:latest 827065509417.dkr.ecr.ap-south-1.amazonaws.com/k8s-deployment:latest
+        docker push 827065509417.dkr.ecr.ap-south-1.amazonaws.com/k8s-deployment:latest
