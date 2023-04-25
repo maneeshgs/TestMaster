@@ -25,7 +25,7 @@ jobs:
     
 
     - name: Login to Amazon ECR
-      uses: aws-actions/amazon-ecr-login@v1
+      uses: aws-actions/amazon-ecr-login@v2
         registry:827065509417.dkr.ecr.ap-south-1.amazonaws.com/k8s-deployment
         region:ap-south-1
 
