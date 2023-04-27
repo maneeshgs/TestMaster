@@ -66,7 +66,7 @@ jobs:
       run: |
         sudo mkdir -p /app
         sudo chown $USER:$USER /app
-        git clone https://github.com/maneeshgs/TestMaster.git /app
+        git clone git@github.com:maneeshgs/TestMaster.git/app
         
     - name: Deploy Docker Compose
       env:
