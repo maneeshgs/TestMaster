@@ -66,6 +66,7 @@ jobs:
       run: |
         sudo mkdir -p /app
         sudo chown $USER:$USER /app
+        cd /app
         git clone https://github.com/maneeshgs/TestMaster.git
         
     - name: Deploy Docker Compose
