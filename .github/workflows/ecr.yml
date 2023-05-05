@@ -75,7 +75,7 @@ jobs:
         ECR_REPOSITORY: maneeshgs07
         IMAGE_TAG: latest
       run: |
-        cd /app
+        cd /app/TestMaster
         docker-compose pull
         docker-compose up -d
 
