@@ -52,6 +52,12 @@ jobs:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: ap-south-1
+        PRIVATE_KEY: ${{ secrets.AWS_SECRET_KEY  }}
+        HOSTNAME : ec2-65-2-30-32.ap-south-1.compute.amazonaws.com
+        USER_NAME : ec2-user
+            
+        
+          
 
     - name: Install Docker Compose
       run: |
@@ -64,6 +70,9 @@ jobs:
       
     - name: Pull Docker Compose configuration
       run: |
+     
+       echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
+        ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME}
         sudo mkdir -p /app
         sudo chown $USER:$USER /app
         cd /app
@@ -79,13 +88,9 @@ jobs:
         docker-compose pull
         docker-compose up -d
         
-    - name: Deploy to EC2 Instance
-      env:
-        EC2_HOST: ec2-65-2-30-32.ap-south-1.compute.amazonaws.com
-        EC2_USERNAME: ec2-user
-      run: |
-        cd /home/maneesh/Downloads
-        ssh $EC2_USERNAME@$EC2_HOST "cd /app/TestMaster && docker-compose pull && docker-compose up -d"
+ 
+          
+           
 
 
 
