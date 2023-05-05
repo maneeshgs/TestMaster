@@ -84,6 +84,7 @@ jobs:
         EC2_HOST: ec2-65-2-30-32.ap-south-1.compute.amazonaws.com
         EC2_USERNAME: ec2-user
       run: |
+        cd /home/maneesh/Downloads
         ssh $EC2_USERNAME@$EC2_HOST "cd /app/TestMaster && docker-compose pull && docker-compose up -d"
 
 
